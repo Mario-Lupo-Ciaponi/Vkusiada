@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block title %} About Us {% endblock %} {% block
+style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/about.css') }}"
+/>
+{% endblock %} {% block content %}
+<div class="about-container">
+  <h1>Welcome to Vkusiada!</h1>
+  <p>
+    Vkusiada is your personal recipe finder, designed to make meal preparation
+    simple and enjoyable. Enter the ingredients you have at home, and we'll
+    provide you with a variety of delicious recipes tailored to your pantry.
+    Cooking has never been this easy!
+  </p>
+
+  <div class="features">
+    <h2>Our Features:</h2>
+    <ul>
+      <li>Search for recipes based on your available ingredients.</li>
+      <li>Save and manage your ingredient list for quick access.</li>
+      <li>Get detailed instructions and beautiful images for every recipe.</li>
+      <li>Built-in integration with TheMealDB API for thousands of recipes.</li>
+      <li>User-friendly design and intuitive navigation.</li>
+    </ul>
+  </div>
+
+  <p>
+    Whether you're a beginner in the kitchen or a seasoned chef, Vkusiada is
+    here to inspire your cooking journey. Have questions? Visit our
+    <a href="/contact">Contact Us</a> page, and we'd love to help.
+  </p>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %}Ingredients{% endblock %} {% block
+style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/ingredients-page-style.css') }}"
+/>
+{% endblock %} {% block content %}
+<div class="ingredients-container">
+  {% if name[-1] == "s" %}
+  <h1>{{ name }}' ingredients</h1>
+  {% else %}
+  <h1>{{ name }}'s ingredients</h1>
+  {% endif %} {% if ingredients %}
+  <ul class="ingredients-list">
+    {% for ingredient in ingredients %}
+    <li>{{ ingredient }}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No ingredients added yet. Add some on the homepage!</p>
+  {% endif %}
+</div>
+
+<p class="add-p">
+  Do you have other ingredients that are not in the list?
+  <a class="add-a" href="/home">Add them</a>
+</p>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}Home - Vkusiada{% endblock %} {%
+block content %} {% block style %}<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/index-style.css') }}"
+/>
+{% endblock %}
+
+<!-- Form to Add Ingredients -->
+<form method="POST" action="/home">
+  <h2>Add Ingredients</h2>
+  <label for="ingredients">Enter ingredient(s), separated by a comma:</label>
+  <input
+    type="text"
+    id="ingredients"
+    name="ingredients"
+    placeholder="e.g., tomato, onion, garlic"
+    required
+  />
+  <br /><br />
+  <button type="submit">Add Ingredients</button>
+</form>
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%}
+<ul class="message-list">
+  {% for category, message in messages %}
+  <li class="{{ category }}">{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %} {% endwith %} {% endblock %}

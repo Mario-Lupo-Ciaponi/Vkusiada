@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %} Recipes {% endblock %} {% block
+style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/recipe.css') }}"
+/>
+{% endblock %} {% block content %}
+<div class="recipe-container">
+  <h1>Recipes Based on Your Ingredients</h1>
+  {% if recipes %}
+  <ul class="recipe-list">
+    {% for recipe in recipes %}
+    <li class="recipe-item">
+      <h3>{{ recipe[1] }}</h3>
+      <img src="{{ recipe[2] }}" alt="{{ recipe[1] }}" width="200" />
+      <a href="/recipe/{{ recipe[0] }}">View Recipe</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p style="text-align: center; font-size: 1.2rem; color: #555">
+    No recipes found!
+  </p>
+  {% endif %}
+</div>
+{% endblock %}
