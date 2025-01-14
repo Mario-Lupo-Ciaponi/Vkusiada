@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}Add Ingredients{% endblock %} {%
+block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/add_ingredients.css') }}"
+/>
+{% endblock %} {% block content %}
+<div class="container">
+  <div class="form-wrapper">
+    <h1>Add Ingredients</h1>
+    <form method="POST" action="/add-ingredients">
+      <label for="ingredients">Enter Ingredients:</label>
+      <textarea
+        id="ingredients"
+        name="ingredients"
+        rows="5"
+        placeholder="Enter ingredients separated by commas (e.g., Tomato, Onion, Garlic)"
+        required
+      ></textarea>
+      <button type="submit" class="btn">Add Ingredients</button>
+    </form>
+    <a href="/ingredients" class="btn-secondary">Back to Ingredients</a>
+  </div>
+</div>
+{% endblock %}

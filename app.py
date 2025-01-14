@@ -169,6 +169,67 @@ def contact_page():
 
     return render_template("contact.html")
 
+@app.route("/add-ingredients", methods=["GET", "POST"])
+def add_ingredients_page():
+    if "user" not in session:
+        return redirect(url_for("register"))
+
+    username = session["user"]
+
+    if request.method == "POST":
+        # Get new ingredients from the form
+        new_ingredients = request.form["ingredients"].strip()
+        
+        # Ensure input is provided
+        if not new_ingredients:
+            flash("Please provide ingredients to add.", "danger")
+            return redirect(url_for("add_ingredients_page"))
+
+        # Split new ingredients by comma and clean them
+        new_ingredients = [ingredient.strip() for ingredient in new_ingredients.split(",")]
+
+        # Fetch current ingredients from the user_info table
+        connection = get_db_connection()
+        cursor = connection.cursor(dictionary=True)
+        try:
+            cursor.execute(
+                "SELECT ingredients FROM user_info WHERE username = %s", (username,)
+            )
+            user_info = cursor.fetchone()
+
+            if user_info:
+                current_ingredients = user_info['ingredients']
+                if current_ingredients:
+                    # Split existing ingredients and clean them
+                    current_ingredients = [ingredient.strip() for ingredient in current_ingredients.split(",")]
+                else:
+                    current_ingredients = []
+
+                # Combine new and existing ingredients, ensuring no duplicates
+                all_ingredients = list(set(current_ingredients + new_ingredients))
+
+                # Update the ingredients column in the user_info table
+                cursor.execute(
+                    "UPDATE user_info SET ingredients = %s WHERE username = %s",
+                    (",".join(all_ingredients), username)
+                )
+                connection.commit()
+                flash("Ingredients added successfully!", "success")
+            else:
+                flash("User not found!", "danger")
+
+        except mysql.connector.Error as err:
+            flash(f"Error adding ingredients: {err}", "danger")
+            print(f"Database error while adding ingredients: {err}")
+        finally:
+            cursor.close()
+            connection.close()
+
+        return redirect(url_for("ingredients_page"))
+
+    return render_template("add-ingredients.html")
+
+
 @app.route("/ingredients")
 def ingredients_page():
     if "user" not in session:

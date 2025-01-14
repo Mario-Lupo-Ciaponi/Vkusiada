@@ -1,30 +1,39 @@
 {% extends "base.html" %} {% block title %}Home - Vkusiada{% endblock %} {%
-block content %} {% block style %}<link
+block style %}
+<link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/index-style.css') }}"
 />
+{% endblock %} {% block content %}
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Welcome back to Vkusiada, {{ name }}!</h1>
+      <p>
+        Start exploring new recipes based on the ingredients you already have!
+      </p>
+      <a href="/recipe" class="cta-button">Explore Recipes</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <h2>How Vkusiada Helps You</h2>
+    <div class="features">
+      <div class="feature-item">
+        <h3>Manage Your Ingredients</h3>
+        <p>Track your ingredients and use them to discover the best recipes.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Discover Recipes</h3>
+        <p>Find delicious meals based on the ingredients you have at home.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Save Your Favorite Recipes</h3>
+        <p>Save recipes to your favorites for easy access anytime.</p>
+      </div>
+    </div>
+  </section>
+</div>
 {% endblock %}
-
-<!-- Form to Add Ingredients -->
-<form method="POST" action="/home">
-  <h2>Add Ingredients</h2>
-  <label for="ingredients">Enter ingredient(s), separated by a comma:</label>
-  <input
-    type="text"
-    id="ingredients"
-    name="ingredients"
-    placeholder="e.g., tomato, onion, garlic"
-    required
-  />
-  <br /><br />
-  <button type="submit">Add Ingredients</button>
-</form>
-
-{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
-%}
-<ul class="message-list">
-  {% for category, message in messages %}
-  <li class="{{ category }}">{{ message }}</li>
-  {% endfor %}
-</ul>
-{% endif %} {% endwith %} {% endblock %}

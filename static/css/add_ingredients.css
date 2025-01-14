@@ -1,0 +1,108 @@
+/* Centering the form on the page */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 80vh;
+  padding: 20px;
+  box-sizing: border-box; /* Ensures padding doesn’t break layouts */
+}
+
+/* Styling the form wrapper */
+.form-wrapper {
+  background-color: #fff; /* Optional: Add a white background for the form */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Ensures the form doesn’t stretch too wide */
+  text-align: center; /* Center-align text inside the form */
+  box-sizing: border-box;
+}
+
+/* Styling the textarea */
+textarea {
+  width: 100%; /* Ensure it takes the full width of the container */
+  max-width: 100%; /* Prevent it from expanding beyond the container */
+  min-height: 100px; /* Minimum height */
+  resize: vertical; /* Allow resizing only vertically */
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Prevent padding from adding to width */
+}
+
+/* Buttons alignment */
+.form-wrapper .btn,
+.form-wrapper .btn-secondary {
+  display: inline-block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Secondary button for back navigation */
+.btn-secondary {
+  background-color: #ddd;
+  color: #333;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-secondary:hover {
+  background-color: #ccc;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button.btn {
+  background-color: olive;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.btn:hover {
+  background-color: #3d3d00;
+}
+
+a.btn-secondary {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: olive;
+  border: 1px solid olive;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a.btn-secondary:hover {
+  background-color: olive;
+  color: #fff;
+}

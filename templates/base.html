@@ -23,8 +23,24 @@
       <ul class="navbar-links">
         <li><a href="/home">Home</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/ingredients">Ingredients</a></li>
-        <li><a href="/recipe">Recipes</a></li>
+        <li>
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Ingredients</a>
+            <div class="dropdown-content">
+              <a href="/ingredients">All Ingredients</a>
+              <a href="/add-ingredients">Add Ingredient</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <a href="#" class="dropbtn">Recipes</a>
+            <div class="dropdown-content">
+              <a href="/ingredients">All recipes</a>
+              <a href="/add-ingredient">Add recipe</a>
+            </div>
+          </div>
+        </li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/logout">Logout</a></li>
       </ul>
