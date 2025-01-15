@@ -1,0 +1,93 @@
+/* General styles for the delete account page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.delete-account-container {
+  max-width: 500px;
+  margin: 100px auto;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px 30px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  color: #555555;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Delete button */
+.delete-button {
+  background-color: #e63946;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d62839;
+}
+
+/* Cancel button */
+.cancel-button {
+  background-color: #457b9d;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #355d73;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .delete-account-container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .delete-button,
+  .cancel-button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}

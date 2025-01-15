@@ -325,6 +325,41 @@ def logout():
     session.pop("user", None)
     return redirect(url_for("login"))
 
+@app.route("/delete-account", methods=["GET", "POST"])
+def delete_account():
+    if "user" not in session:
+        return redirect(url_for("register"))
+    
+    username = session["user"]
+
+    if request.method == "POST":
+        # Connect to the database
+        connection = get_db_connection()
+        cursor = connection.cursor()
+        try:
+            # Delete user data from `user_info` and `users` tables
+            cursor.execute("DELETE FROM user_info WHERE username = %s", (username,))
+            cursor.execute("DELETE FROM users WHERE username = %s", (username,))
+            connection.commit()
+            
+            # Flash a success message
+            flash("Your account has been deleted successfully.", "success")
+
+            # Log out the user
+            session.pop("user", None)
+
+            # Redirect to the registration page
+            return redirect(url_for("register"))
+        except mysql.connector.Error as err:
+            flash(f"Error deleting account: {err}", "danger")
+            print(f"Database error while deleting account: {err}")
+        finally:
+            cursor.close()
+            connection.close()
+    
+    return render_template("delete-account.html", name=username)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
