@@ -1,25 +1,41 @@
-{% extends "base.html" %} {% block title %} Recipes {% endblock %} {% block
-style %}
+{% extends "base.html" %} {% block style %}
 <link
   rel="stylesheet"
-  href="{{ url_for('static', filename='css/recipe.css') }}"
+  href="{{ url_for('static', filename='css/ingredients-page-style.css') }}"
 />
 {% endblock %} {% block content %}
-<div class="recipe-container">
-  <h1>Recipes Based on Your Ingredients</h1>
+<div class="ingredients-container">
+  {% if ingredients %}
+  <h2 class="ingredients-title">Recipes Found</h2>
+
   {% if recipes %}
-  <ul class="recipe-list">
+  <!-- Recipes Grid -->
+  <div class="recipes-grid">
     {% for recipe in recipes %}
-    <li class="recipe-item">
-      <h3>{{ recipe[1] }}</h3>
-      <img src="{{ recipe[2] }}" alt="{{ recipe[1] }}" width="200" />
-      <a href="/recipe/{{ recipe[0] }}">View Recipe</a>
-    </li>
+    <div class="recipe-card">
+      <a href="/recipe/{{ recipe[0] }}" class="recipe-link">
+        <img src="{{ recipe[2] }}" alt="{{ recipe[1] }}" class="recipe-image" />
+        <div class="recipe-info">
+          <h3 class="recipe-name">{{ recipe[1] }}</h3>
+          <p class="recipe-desc">A delicious recipe just for you!</p>
+        </div>
+      </a>
+    </div>
     {% endfor %}
-  </ul>
+  </div>
   {% else %}
-  <p style="text-align: center; font-size: 1.2rem; color: #555">
-    No recipes found!
+  <!-- Message if no recipes are found -->
+  <p class="no-recipes-message">
+    No recipes found for the ingredients you provided.
+  </p>
+  {% endif %} {% else %}
+  <!-- Message if no ingredients are available -->
+  <p class="no-ingredients-message">
+    You have no ingredients. Please
+    <a href="/add-ingredients" class="add-ingredients-link"
+      >add some ingredients</a
+    >
+    first.
   </p>
   {% endif %}
 </div>

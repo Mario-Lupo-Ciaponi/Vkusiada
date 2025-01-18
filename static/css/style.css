@@ -23,16 +23,24 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-brand {
+/* Adjust logo styling */
+.site-logo {
   display: flex;
   align-items: center;
 }
 
-.site-name {
-  font-size: 1.5rem;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
+.logo-img {
+  height: 100px; /* Adjust the height of the logo */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the logo fits nicely */
+  cursor: pointer;
+}
+
+/* Optional: Adjust spacing around the logo */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds space between logo and other elements */
 }
 
 .menu-toggle {

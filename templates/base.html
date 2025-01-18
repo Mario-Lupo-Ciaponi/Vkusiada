@@ -11,9 +11,17 @@
     {% block style %}{% endblock %}
   </head>
   <body>
+    <!-- Navbar -->
     <nav class="navbar">
       <div class="navbar-brand">
-        <a href="#" class="site-name">Vkusiada</a>
+        <!-- Replace text with a logo image -->
+        <a href="/home" class="site-logo">
+          <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="Vkusiada Logo"
+            class="logo-img"
+          />
+        </a>
         <button class="menu-toggle" aria-label="Toggle Menu">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -36,8 +44,8 @@
           <div class="dropdown">
             <a href="#" class="dropbtn">Recipes</a>
             <div class="dropdown-content">
-              <a href="/ingredients">All recipes</a>
-              <a href="/add-ingredient">Add recipe</a>
+              <a href="/recipe">All Recipes</a>
+              <a href="/add-recipe">Add Recipe</a>
             </div>
           </div>
         </li>
@@ -46,9 +54,9 @@
           <div class="dropdown">
             <a href="#" class="dropbtn">Profile</a>
             <div class="dropdown-content">
-              <a href="#">My profile</a>
+              <a href="#">My Profile</a>
               <a href="/logout">Logout</a>
-              <a href="/delete-account">Delete account</a>
+              <a href="/delete-account">Delete Account</a>
             </div>
           </div>
         </li>

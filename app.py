@@ -259,10 +259,13 @@ def recipe_page():
             return render_template("recipe-page.html", recipes=recipes, ingredients=ingredients)
         else:
             flash("No recipes found for the provided ingredients. Try with different ingredients!", "warning")
-            return redirect(url_for("home_page"))
+            # Stay on the recipe page and display the message
+            return render_template("recipe-page.html", recipes=[], ingredients=ingredients)
     else:
         flash("You have no ingredients. Please add some ingredients first.", "danger")
-        return redirect(url_for("home_page"))
+        # Stay on the recipe page and display the message
+        return render_template("recipe-page.html", recipes=[], ingredients=[])
+
 
     
 

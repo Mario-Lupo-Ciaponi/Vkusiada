@@ -1,61 +1,93 @@
-/* Ingredients Page Styling */
+/* General Styling */
 .ingredients-container {
   background-color: #f9f9f9;
   padding: 40px;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
 }
 
-.ingredients-container h1 {
-  font-size: 2rem;
+.ingredients-title {
+  font-size: 2.2rem;
   color: #333;
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* Recipes Grid Layout */
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.recipe-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.recipe-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.recipe-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.ingredients-list {
-  list-style-type: none;
-  padding-left: 0;
+.recipe-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+
+.recipe-desc {
+  font-size: 1rem;
+  color: #777;
+  margin: 0;
+}
+
+/* Messages */
+.no-recipes-message,
+.no-ingredients-message {
+  font-size: 1.2rem;
+  color: #555;
+  text-align: center;
   margin-top: 20px;
 }
 
-.ingredients-list li {
-  background-color: #fff;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  border: 1px solid #ccc;
-  color: #333;
-}
-
-.ingredients-list li:hover {
-  background-color: #f1f1f1;
-}
-
-.ingredients-container p {
-  font-size: 1.1rem;
-  color: #555;
-  text-align: center;
-  margin-top: 30px;
-}
-
-/* Add ingredients link styling */
-.add-p {
-  text-align: center;
-  font-size: 13.5px;
-  color: #555;
-}
-
-.add-a {
+.add-ingredients-link {
   color: #007bff;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
 }
 
-.add-a:hover {
+.add-ingredients-link:hover {
   color: #0056b3;
 }
 
@@ -65,15 +97,15 @@
     padding: 20px;
   }
 
-  .ingredients-container h1 {
+  .ingredients-title {
     font-size: 1.8rem;
   }
 
-  .ingredients-list li {
-    font-size: 1rem;
+  .recipe-name {
+    font-size: 1.2rem;
   }
 
-  .add-p {
-    font-size: 1rem;
+  .recipe-desc {
+    font-size: 0.9rem;
   }
 }
