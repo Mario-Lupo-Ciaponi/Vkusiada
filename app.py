@@ -243,7 +243,82 @@ def ingredients_page():
 @app.route("/about")
 def about_page():
     return render_template("about-page.html")
-    
+
+@app.route("/save-recipe", methods=["POST"])
+def save_recipe():
+    if "user" not in session:
+        flash("You need to be logged in to save recipes.", "danger")
+        return redirect(url_for("login"))
+
+    username = session["user"]
+    recipe_id = request.form.get("recipe_id")
+    recipe_name = request.form.get("recipe_name")
+    instructions = request.form.get("instructions")  # Optional field
+
+    # Print incoming data for debugging
+    print(f"Recipe Data: recipe_id={recipe_id}, recipe_name={recipe_name}, instructions={instructions}")
+
+    # Validate input
+    if not recipe_id or not recipe_name:
+        flash("Invalid recipe data!", "danger")
+        return redirect(url_for("recipe_page"))
+
+    # Save to the database
+    connection = get_db_connection()
+    cursor = connection.cursor()
+    try:
+        # Insert saved recipe details into the database
+        cursor.execute(
+            """
+            INSERT INTO saved_recipes (username, recipe_id, recipe_name, instructions)
+            VALUES (%s, %s, %s, %s)
+            """,
+            (username, recipe_id, recipe_name, instructions or "")
+        )
+        connection.commit()
+        flash("Recipe saved successfully!", "success")
+    except mysql.connector.Error as err:
+        flash(f"Error saving recipe: {err}", "danger")
+        print(f"Database error: {err}")
+    finally:
+        cursor.close()
+        connection.close()
+
+    return redirect(url_for("recipe_page"))
+
+
+
+@app.route("/saved-recipes")
+def saved_recipes():
+    if "user" not in session:
+        flash("You need to log in to view saved recipes.", "danger")
+        return redirect(url_for("login"))
+
+    username = session["user"]
+
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+    try:
+        cursor.execute(
+            "SELECT recipe_id, recipe_name, instructions, timestamp FROM saved_recipes WHERE username = %s",
+            (username,)
+        )
+        recipes = cursor.fetchall()
+
+        # Print the fetched recipes for debugging
+        print(f"Fetched recipes: {recipes}")
+
+    except mysql.connector.Error as err:
+        flash(f"Error fetching saved recipes: {err}", "danger")
+        recipes = []
+    finally:
+        cursor.close()
+        connection.close()
+
+    return render_template("saved-recipes.html", recipes=recipes)
+
+
+
 
 @app.route("/recipe")
 def recipe_page():

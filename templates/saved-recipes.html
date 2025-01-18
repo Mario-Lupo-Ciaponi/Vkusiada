@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+<div class="ingredients-container">
+  <h2 class="ingredients-title">Your Saved Recipes</h2>
+
+  {% if recipes %}
+  <div class="recipes-grid">
+    {% for recipe in recipes %}
+    <div class="recipe-card">
+      <div class="recipe-info">
+        <h3 class="recipe-name">{{ recipe['recipe_name'] }}</h3>
+        <p class="recipe-desc">
+          {{ recipe['instructions'] or "No instructions provided" }}
+        </p>
+        <p class="timestamp">Saved on: {{ recipe['timestamp'] }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="no-recipes-message">You haven't saved any recipes yet!</p>
+  {% endif %}
+</div>
+{% endblock %}
