@@ -1,23 +1,27 @@
-{% extends "base.html" %} {% block content %}
-<div class="ingredients-container">
-  <h2 class="ingredients-title">Your Saved Recipes</h2>
+{% extends "base.html" %} {% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/saved-recipes.css') }}"
+/>
+{% endblock %} {% block content %}
+<div class="saved-recipes-container">
+  <h1>Saved Recipes</h1>
 
   {% if recipes %}
-  <div class="recipes-grid">
+  <ul>
     {% for recipe in recipes %}
-    <div class="recipe-card">
-      <div class="recipe-info">
-        <h3 class="recipe-name">{{ recipe['recipe_name'] }}</h3>
-        <p class="recipe-desc">
-          {{ recipe['instructions'] or "No instructions provided" }}
-        </p>
-        <p class="timestamp">Saved on: {{ recipe['timestamp'] }}</p>
-      </div>
-    </div>
+    <li>
+      <strong>{{ recipe.recipe_name }}</strong><br />
+      <em>Saved on: {{ recipe.timestamp }}</em><br />
+      <p>
+        {{ recipe.instructions if recipe.instructions else "No instructions
+        available." }}
+      </p>
+    </li>
     {% endfor %}
-  </div>
+  </ul>
   {% else %}
-  <p class="no-recipes-message">You haven't saved any recipes yet!</p>
+  <p>You have no saved recipes.</p>
   {% endif %}
 </div>
 {% endblock %}

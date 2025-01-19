@@ -1,0 +1,104 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for Saved Recipes */
+.saved-recipes-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Page Title */
+.saved-recipes-container h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Recipe List Styling */
+.saved-recipes-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.saved-recipes-container li {
+  background: #f9f9f9;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.saved-recipes-container li:last-child {
+  margin-bottom: 0;
+}
+
+/* Recipe Name */
+.saved-recipes-container li strong {
+  font-size: 1.2em;
+  color: #007bff;
+}
+
+/* Timestamp */
+.saved-recipes-container li em {
+  display: block;
+  margin: 5px 0 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Instructions */
+.saved-recipes-container li p {
+  font-size: 1em;
+  line-height: 1.5;
+  color: #555;
+  margin: 0;
+}
+
+/* No Recipes Message */
+.saved-recipes-container p {
+  text-align: center;
+  font-size: 1.1em;
+  color: #999;
+  margin: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .saved-recipes-container {
+    padding: 15px;
+  }
+
+  .saved-recipes-container h1 {
+    font-size: 1.8em;
+  }
+
+  .saved-recipes-container li {
+    padding: 10px;
+  }
+
+  .saved-recipes-container li strong {
+    font-size: 1.1em;
+  }
+
+  .saved-recipes-container li em {
+    font-size: 0.85em;
+  }
+
+  .saved-recipes-container li p {
+    font-size: 0.95em;
+  }
+}

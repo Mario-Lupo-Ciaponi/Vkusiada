@@ -1,0 +1,119 @@
+/* Recipe Detail Page Styles */
+
+/* General container styling */
+.recipe-detail-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Recipe Title */
+.recipe-detail-container h1 {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Recipe Image */
+.recipe-detail-container img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Category and Cuisine Section */
+.recipe-detail-container p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.recipe-detail-container strong {
+  font-weight: bold;
+  color: #555;
+}
+
+/* Instructions Section */
+.recipe-detail-container h2 {
+  font-size: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #444;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+
+.recipe-detail-container .instructions {
+  line-height: 1.6;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+/* Watch Video Button */
+.recipe-detail-container .video-link {
+  display: inline-block;
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.recipe-detail-container .video-link:hover {
+  background-color: #218838;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+/* Save Recipe Button */
+.recipe-detail-container form button {
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.recipe-detail-container form button:hover {
+  background-color: #0056b3;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .recipe-detail-container {
+    padding: 15px;
+  }
+
+  .recipe-detail-container h1 {
+    font-size: 1.8em;
+  }
+
+  .recipe-detail-container h2 {
+    font-size: 1.3em;
+  }
+
+  .recipe-detail-container .video-link,
+  .recipe-detail-container form button {
+    font-size: 0.9em;
+  }
+}

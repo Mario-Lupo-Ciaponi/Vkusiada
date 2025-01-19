@@ -1,0 +1,59 @@
+/* Recipe Grid Styling */
+.recipes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.recipe-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 250px;
+  text-align: center;
+}
+
+.recipe-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.recipe-card h3 {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.recipe-card p {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+}
+
+/* Button Styling */
+.save-button,
+.details-button {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 5px 5px 0;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.details-button {
+  background-color: #28a745;
+}
+
+.save-button:hover,
+.details-button:hover {
+  opacity: 0.9;
+}

@@ -70,9 +70,9 @@ def recipe_detail(recipe_id):
     recipe = response.json().get("meals")[0]  # Extract the first recipe
     
     if recipe:
-        return render_template("recipe_detail.html", recipe=recipe)
+        return render_template("recipe-detail.html", recipe=recipe)
     else:
-        return render_template("recipe_detail.html", recipe=None)
+        return render_template("recipe-detail.html", recipe=None)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -253,13 +253,10 @@ def save_recipe():
     username = session["user"]
     recipe_id = request.form.get("recipe_id")
     recipe_name = request.form.get("recipe_name")
-    instructions = request.form.get("instructions")  # Optional field
-
-    # Print incoming data for debugging
-    print(f"Recipe Data: recipe_id={recipe_id}, recipe_name={recipe_name}, instructions={instructions}")
+    instructions = request.form.get("instructions")  # Instructions from TheMealDB
 
     # Validate input
-    if not recipe_id or not recipe_name:
+    if not recipe_id or not recipe_name or not instructions:
         flash("Invalid recipe data!", "danger")
         return redirect(url_for("recipe_page"))
 
@@ -273,7 +270,7 @@ def save_recipe():
             INSERT INTO saved_recipes (username, recipe_id, recipe_name, instructions)
             VALUES (%s, %s, %s, %s)
             """,
-            (username, recipe_id, recipe_name, instructions or "")
+            (username, recipe_id, recipe_name, instructions)
         )
         connection.commit()
         flash("Recipe saved successfully!", "success")
@@ -284,7 +281,7 @@ def save_recipe():
         cursor.close()
         connection.close()
 
-    return redirect(url_for("recipe_page"))
+    return redirect(url_for("saved_recipes"))
 
 
 
@@ -316,8 +313,6 @@ def saved_recipes():
         connection.close()
 
     return render_template("saved-recipes.html", recipes=recipes)
-
-
 
 
 @app.route("/recipe")
