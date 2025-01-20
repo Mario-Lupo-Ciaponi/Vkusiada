@@ -102,3 +102,46 @@ body {
     font-size: 0.95em;
   }
 }
+
+/* Center the Button */
+.details-button {
+  display: inline-block;
+  margin: 10px auto 0; /* Top margin of 10px and center alignment */
+  padding: 8px 12px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.details-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.details-button:active {
+  background-color: #004085;
+  transform: translateY(0);
+}
+
+/* Center the List Items and Content */
+.saved-recipes-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.saved-recipes-container li {
+  text-align: center; /* Center-align all text in the list items */
+  background: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

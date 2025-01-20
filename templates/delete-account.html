@@ -1,19 +1,14 @@
-{% extends "base.html" %} {% block title %}Delete Account - Vkusiada{% endblock
-%} {% block style %}
+{% extends "base.html" %} {% block style %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/delete-account-style.css') }}"
 />
 {% endblock %} {% block content %}
 <div class="delete-account-container">
-  <h1>Delete Your Account</h1>
-  <p>
-    Are you sure you want to delete your account, {{ name }}? This action cannot
-    be undone.
-  </p>
-  <form method="POST">
+  <h1>Delete Account</h1>
+  <p>Are you sure you want to delete your account, {{ name }}?</p>
+  <form method="POST" action="{{ url_for('delete_account') }}">
     <button type="submit" class="delete-button">Delete My Account</button>
-    <a href="/home" class="cancel-button">Cancel</a>
   </form>
 </div>
 {% endblock %}

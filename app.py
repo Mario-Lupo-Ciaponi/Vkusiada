@@ -335,8 +335,6 @@ def recipe_page():
         flash("You have no ingredients. Please add some ingredients first.", "danger")
         # Stay on the recipe page and display the message
         return render_template("recipe-page.html", recipes=[], ingredients=[])
-
-
     
 
 @app.route("/", methods=["GET", "POST"])
@@ -404,33 +402,45 @@ def delete_account():
         return redirect(url_for("register"))
     
     username = session["user"]
+    print(f"User attempting to delete account: {username}")  # Debugging log
 
     if request.method == "POST":
-        # Connect to the database
         connection = get_db_connection()
         cursor = connection.cursor()
         try:
-            # Delete user data from `user_info` and `users` tables
-            cursor.execute("DELETE FROM user_info WHERE username = %s", (username,))
-            cursor.execute("DELETE FROM users WHERE username = %s", (username,))
-            connection.commit()
-            
-            # Flash a success message
-            flash("Your account has been deleted successfully.", "success")
+            # Start a transaction to ensure atomicity
+            connection.start_transaction()
 
-            # Log out the user
+            # Delete from saved_recipes
+            cursor.execute("DELETE FROM saved_recipes WHERE username = %s", (username,))
+            
+            # Delete from user_info
+            cursor.execute("DELETE FROM user_info WHERE username = %s", (username,))
+            
+            # Delete from users
+            cursor.execute("DELETE FROM users WHERE username = %s", (username,))
+
+            # Commit the transaction
+            connection.commit()
+
+            # Flash success message and clear the session
+            flash("Your account and all related data have been deleted successfully.", "success")
             session.pop("user", None)
 
             # Redirect to the registration page
             return redirect(url_for("register"))
         except mysql.connector.Error as err:
+            # Rollback the transaction if any error occurs
+            connection.rollback()
             flash(f"Error deleting account: {err}", "danger")
             print(f"Database error while deleting account: {err}")
         finally:
             cursor.close()
             connection.close()
-    
+
+    # Render the confirmation page for account deletion
     return render_template("delete-account.html", name=username)
+
 
 
 

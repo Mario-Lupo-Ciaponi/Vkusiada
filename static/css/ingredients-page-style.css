@@ -1,37 +1,94 @@
-/* Recipe Card - Even Smaller */
-.recipe-card {
-  background-color: #fff;
-  border-radius: 8px; /* Reduced border radius for a tighter look */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Lighter shadow for a more subtle effect */
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  max-width: 280px; /* Set a max width to keep cards small */
-  margin: 10px; /* Smaller margin between cards */
-}
-
-.recipe-card:hover {
-  transform: translateY(-3px); /* Subtle lift effect */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Slightly more prominent shadow on hover */
-}
-
-.recipe-image {
-  width: 100%;
-  height: 150px; /* Smaller height for the image */
-  object-fit: cover;
-}
-
-.recipe-info {
-  padding: 12px; /* Reduced padding for a more compact look */
-}
-
-.recipe-name {
-  font-size: 1.2rem; /* Further reduced font size */
-  font-weight: bold;
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
   color: #333;
-  margin: 8px 0;
+  margin: 0;
+  padding: 0;
 }
 
-.recipe-desc {
-  font-size: 0.9rem; /* Smaller font size */
-  color: #555;
+/* Container for Ingredients */
+.ingredients-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Page Title */
+.ingredients-container h1 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Ingredients List */
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.ingredients-list li {
+  background: #f9f9f9;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  font-size: 1.1em;
+  text-align: left;
+}
+
+.ingredients-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* No Ingredients Message */
+.ingredients-container p {
+  font-size: 1.1em;
+  color: #666;
+  margin: 20px 0;
+}
+
+/* Add Ingredients Section */
+.add-p {
+  font-size: 1em;
+  color: #333;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.add-p .add-a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.add-p .add-a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ingredients-container {
+    padding: 15px;
+  }
+
+  .ingredients-container h1 {
+    font-size: 1.8em;
+  }
+
+  .ingredients-list li {
+    font-size: 1em;
+    padding: 8px 12px;
+  }
+
+  .add-p {
+    font-size: 0.95em;
+  }
 }

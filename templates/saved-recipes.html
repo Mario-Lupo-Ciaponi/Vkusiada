@@ -17,6 +17,12 @@
         {{ recipe.instructions if recipe.instructions else "No instructions
         available." }}
       </p>
+      <!-- More Details Button -->
+      <a
+        href="{{ url_for('recipe_detail', recipe_id=recipe.recipe_id) }}"
+        class="details-button"
+        >More Details</a
+      >
     </li>
     {% endfor %}
   </ul>
