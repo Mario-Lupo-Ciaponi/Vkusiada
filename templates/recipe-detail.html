@@ -12,6 +12,13 @@ block style %}
   <p><strong>Category:</strong> {{ recipe.strCategory }}</p>
   <p><strong>Cuisine:</strong> {{ recipe.strArea }}</p>
 
+  <h2>Ingredients</h2>
+  <ul>
+    {% for ingredient in ingredients %}
+    <li>{{ ingredient }}</li>
+    {% endfor %}
+  </ul>
+
   <h2>Instructions</h2>
   <p>
     {{ recipe.strInstructions if recipe.strInstructions else "No instructions
@@ -38,5 +45,4 @@ block style %}
   <p>Sorry, no details found for this recipe!</p>
   {% endif %}
 </div>
-
 {% endblock %}

@@ -19,22 +19,23 @@
           <p class="recipe-desc">A delicious recipe just for you!</p>
         </div>
       </a>
-  
+
       <!-- Save Recipe Form -->
       <form method="POST" action="{{ url_for('save_recipe') }}">
-        <input type="hidden" name="recipe_id" value="{{ recipe[0] }}">
-        <input type="hidden" name="recipe_name" value="{{ recipe[1] }}">
-        <input type="hidden" name="instructions" value="Instructions will be available in detail view.">
+        <input type="hidden" name="recipe_id" value="{{ recipe[0] }}" />
+        <input type="hidden" name="recipe_name" value="{{ recipe[1] }}" />
+        <input
+          type="hidden"
+          name="instructions"
+          value="Instructions will be available in detail view."
+        />
         <button type="submit" class="save-button">Save Recipe</button>
       </form>
-  
+
       <!-- View Details Button -->
       <a href="/recipe/{{ recipe[0] }}" class="details-button">View Details</a>
     </div>
     {% endfor %}
-  </div>
-  
-  
   </div>
   {% else %}
   <!-- Message if no recipes are found -->
