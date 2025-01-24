@@ -360,6 +360,37 @@ def saved_recipes():
     # Render the saved recipes template
     return render_template("saved-recipes.html", recipes=recipes)
 
+@app.route("/profile")
+def profile_page():
+    if "user" not in session:
+        flash("You need to log in to view your profile.", "danger")
+        return redirect(url_for("login"))
+
+    user_id = session["user"]
+
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+    try:
+        # Fetch user information
+        cursor.execute(
+            """
+            SELECT username, email, created_at 
+            FROM users 
+            WHERE id = %s
+            """,
+            (user_id,)
+        )
+        user_info = cursor.fetchone()
+    except mysql.connector.Error as err:
+        flash(f"Error fetching profile information: {err}", "danger")
+        user_info = None
+    finally:
+        cursor.close()
+        connection.close()
+
+    # Render the profile page with user info
+    return render_template("profile.html", user_info=user_info)
+
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact_page():
@@ -434,8 +465,6 @@ def delete_account():
 
     # Render the confirmation page for account deletion
     return render_template("delete-account.html")
-
-
 
 @app.route("/")
 @app.route("/home")

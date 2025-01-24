@@ -1,0 +1,77 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Profile Page Styling */
+.profile-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h2 {
+  color: #444;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  margin-bottom: 20px;
+}
+
+.profile-info p {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.profile-info strong {
+  color: #555;
+}
+
+/* Error/No Data Styling */
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* Back to Home Button */
+.back-btn {
+  display: block;
+  width: 200px;
+  margin: 30px auto;
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}

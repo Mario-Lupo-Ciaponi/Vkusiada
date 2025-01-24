@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/profile.css') }}"
+/>
+{% endblock %} {% block title %}Profile{% endblock %} {% block content %}
+<div class="profile-container">
+  <h2>Your Profile</h2>
+
+  {% if user_info %}
+  <div class="profile-info">
+    <p><strong>Username:</strong> {{ user_info.username }}</p>
+    <p><strong>Email:</strong> {{ user_info.email }}</p>
+    <p><strong>Account Created On:</strong> {{ user_info.created_at }}</p>
+  </div>
+  {% else %}
+  <p class="error-message">
+    Unable to load profile information. Please try again later.
+  </p>
+  {% endif %}
+
+  <a href="{{ url_for('home_page') }}" class="back-btn">Back to Home</a>
+</div>
+{% endblock %}
