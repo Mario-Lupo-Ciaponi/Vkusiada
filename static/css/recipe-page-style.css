@@ -1,4 +1,8 @@
-/* Recipe Grid Styling */
+.ingredients-title {
+  text-align: center;
+  font-size: 35px;
+}
+
 .recipes-grid {
   display: flex;
   flex-wrap: wrap;
@@ -8,12 +12,12 @@
 
 .recipe-card {
   background: #fff;
-  border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 15px;
   width: 250px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .recipe-card img {
@@ -40,7 +44,7 @@
   margin: 5px 5px 0;
   font-size: 0.9em;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: none; /* Prevent underlines on links */
   color: #fff;
   background-color: #007bff;
   border: none;
@@ -56,4 +60,9 @@
 .save-button:hover,
 .details-button:hover {
   opacity: 0.9;
+}
+
+/* Prevent underlines for anchor tags */
+a {
+  text-decoration: none;
 }
