@@ -1,19 +1,32 @@
-{% extends "base.html" %} {% block title %}Ingredients{% endblock %} {% block
-style %}
+{% extends "base.html" %}
+
+{% block title %}Ingredients{% endblock %}
+
+{% block style %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/ingredients-page-style.css') }}"
 />
-{% endblock %} {% block content %}
+{% endblock %}
+
+{% block content %}
 <div class="ingredients-container">
   {% if name[-1] == "s" %}
   <h1>{{ name }}' ingredients</h1>
   {% else %}
   <h1>{{ name }}'s ingredients</h1>
-  {% endif %} {% if ingredients %}
+  {% endif %}
+
+  {% if ingredients %}
   <ul class="ingredients-list">
     {% for ingredient in ingredients %}
-    <li>{{ ingredient }}</li>
+    <li>
+      {{ ingredient.name }} <!-- Display the ingredient name -->
+      <!-- Form for deleting an ingredient -->
+      <form action="{{ url_for('delete_ingredient', ingredient_id=ingredient.id) }}" method="POST" style="display:inline;">
+        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+      </form>
+    </li>
     {% endfor %}
   </ul>
   {% else %}
@@ -25,11 +38,14 @@ style %}
   Do you have other ingredients that are not in the list?
   <a class="add-a" href="http://127.0.0.1:5000/add-ingredients">Add them</a>
 </p>
-{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
-%}
-<ul class="message-list">
-  {% for category, message in messages %}
-  <li class="{{ category }}">{{ message }}</li>
-  {% endfor %}
-</ul>
-{% endif %} {% endwith %} {% endblock %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <ul class="message-list">
+    {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}

@@ -27,20 +27,21 @@ def get_all_ingredients(user_id):
     try:
         cursor.execute(
             """
-            SELECT i.name 
+            SELECT i.id, i.name 
             FROM user_ingredients ui
             JOIN ingredients i ON ui.ingredient_id = i.id
             WHERE ui.user_id = %s
-            """, 
+            """,
             (user_id,)
         )
-        return [row['name'] for row in cursor.fetchall()]
+        return cursor.fetchall()  # This now returns a list of dictionaries with 'id' and 'name'
     except mysql.connector.Error as err:
         print(f"Database error: {err}")
         return []
     finally:
         cursor.close()
         connection.close()
+
 
 
 def get_recipes_from_ingredients(ingredients):
@@ -144,6 +145,33 @@ def recipe_detail(recipe_id):
 @app.route("/about")
 def about_page():
     return render_template("about-page.html")
+
+@app.route("/delete-ingredient/<int:ingredient_id>", methods=["POST"])
+def delete_ingredient(ingredient_id):
+    if "user" not in session:
+        flash("You need to be logged in to delete ingredients.", "danger")
+        return redirect(url_for("login"))
+
+    user_id = session["user"]
+
+    connection = get_db_connection()
+    cursor = connection.cursor()
+    try:
+        # Delete the ingredient for the specific user
+        cursor.execute(
+            "DELETE FROM user_ingredients WHERE user_id = %s AND ingredient_id = %s",
+            (user_id, ingredient_id)
+        )
+        connection.commit()
+        flash("Ingredient deleted successfully!", "success")
+    except mysql.connector.Error as err:
+        flash(f"Error deleting ingredient: {err}", "danger")
+    finally:
+        cursor.close()
+        connection.close()
+
+    return redirect(url_for("ingredients_page"))
+
 
 
 @app.route("/add-ingredients", methods=["GET", "POST"])

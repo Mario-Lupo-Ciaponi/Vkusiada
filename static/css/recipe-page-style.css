@@ -62,7 +62,7 @@
   opacity: 0.9;
 }
 
-/* Prevent underlines for anchor tags */
 a {
   text-decoration: none;
+  color: #41c831;
 }
